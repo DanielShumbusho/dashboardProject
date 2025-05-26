@@ -20,8 +20,9 @@ function UserProfile() {
   if (loading) return <p>Loading user</p>;
   if (!user) return <p>User not found</p>;
   return (
-    <div>
+    <div className="bg-white p-4 rounded shadow text-center">
       <h1>{user.name}</h1>
+      <p>User ID: {user.id}</p>
       <p>Email: {user.email}</p>
       <p>Company: {user.company.name}</p>
     </div>
