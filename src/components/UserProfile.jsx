@@ -21,7 +21,7 @@ function UserProfile() {
   if (!user) return <p>User not found</p>;
   return (
     <div>
-      <h>{user.name}</h>
+      <h1>{user.name}</h1>
       <p>Email: {user.email}</p>
       <p>Company: {user.company.name}</p>
     </div>

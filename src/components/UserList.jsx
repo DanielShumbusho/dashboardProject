@@ -1,37 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 function UserList() {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => {
-        setUsers(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError("Failed to fetch users");
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <p>Loading Users...</p>;
-  if (error) return <p>{error}</p>;
+  if (!users.length) return <p>No more users found.</p>;
 
   return (
-    <ul>
-      {users.map((user) => (
-        <li key={user.id}>
-          <Link to={`/users/${user.id}`}>{user.id}</Link>
-        </li>
-      ))}
-    </ul>
+    <div className="bg-white p-4 rounded shadow text-center">
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <Link to={`/users/${user.id}`}>{user.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
